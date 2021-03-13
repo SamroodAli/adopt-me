@@ -1,0 +1,23 @@
+{
+  "name": "adopt-me",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamroodAli/adopt-me.git"
+  },
+  "keywords": [],
+  "author": "react,samroodali,samroodAli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamroodAli/adopt-me/issues"
+  },
+  "homepage": "https://github.com/SamroodAli/adopt-me#readme",
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
+}
