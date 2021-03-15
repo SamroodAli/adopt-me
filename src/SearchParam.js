@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ANIMALS = ["bird", "cat", "rabbit", "reptile"];
+const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
   const [location, setLocation] = useState("Kerala,India");
@@ -26,8 +26,15 @@ const SearchParams = () => {
             id="animal"
             value={animal}
             onChange={(e) => setAnimal(e.target.value)}
-            onBlur={(e) => setAnimal(e.target.value)} // when element uses focus,using tabs to change focus etc
+            onBlur={(e) => setAnimal(e.target.value)}
           >
+            {/* default empty option*/}
+            <option />
+            {ANIMALS.map((animal) => (
+              <option value={animal} key={animal}>
+                {animal}
+              </option>
+            ))}
           </select>
         </label>
         <button>Submit</button>
