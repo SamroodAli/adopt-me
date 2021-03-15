@@ -1,7 +1,10 @@
 import { useState } from "react";
 
+const ANIMALS = ["bird", "cat", "rabbit", "reptile"];
+
 const SearchParams = () => {
-  let [location, setLocation] = useState("Kerala,India");
+  const [location, setLocation] = useState("Kerala,India");
+  const [animal, setAnimal] = useState("");
 
   return (
     <div className="search-params">
@@ -16,7 +19,18 @@ const SearchParams = () => {
             placeholder="location"
           />
         </label>
-        s<button>Submit</button>
+        <label htmlFor="animal">
+          Animal
+          <select
+            name="animal"
+            id="animal"
+            value={animal}
+            onChange={(e) => setAnimal(e.target.value)}
+            onBlur={(e) => setAnimal(e.target.value)} // when element uses focus,using tabs to change focus etc
+          >
+          </select>
+        </label>
+        <button>Submit</button>
       </form>
     </div>
   );
