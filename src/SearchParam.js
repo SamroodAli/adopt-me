@@ -4,16 +4,25 @@ import Pet from "./Pet";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
-  const [location, setLocation] = useState("Seattle,WA");
-  const [animal, setAnimal] = useState("");
-  const [breed, setBreed] = useState("");
-  const [pets, setPets] = useState([]);
-  const breeds = [];
+  // data binding with default as Seattle, WA, used in onChange in input react element
+  const [location, setLocation] = useState("Seattle, WA");
 
+  // For drop down Animals, we create react elements mapping ANIMALS outside function, but won't mutate ANIMALS.
+  const [animal, setAnimal] = useState("");
+
+  //For breeds, we will use an external API, using fetch, which is a sideeffect, we use useEffect for sideeffects
+  const [breed, setBreed] = useState("");
+  const breeds = [];
+  //same as breeds, we will use fetch in useEffect
+  const [pets, setPets] = useState([]);
+
+  //side effects
   useEffect(() => {
     requestPets();
   }, []);
+  // [] in above line=> dependencies for useEffect for when to run, empty [] means run once at the beginning //if nothing is here, it will run after every render
 
+  // async function to get pets from the api using fetch
   async function requestPets() {
     const res = await fetch(
       `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
