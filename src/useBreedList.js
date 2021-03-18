@@ -15,4 +15,17 @@ export default function useBreedList(animal) {
       requestBreedList();
     }
   });
+
+  async function requestBreedList() {
+    setBreedList([]); //to remove any previous states
+    setStatus("loading");
+
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/breeds?animal=${animal}`
+    );
+    const json = await res.json();
+    localCache[animal] = json.breeds || []; //empty array if the api fails
+    setBreedList(localCache[animal]);
+    setStatus("loaded");
+  }
 }
