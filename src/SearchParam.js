@@ -28,7 +28,7 @@ const SearchParams = () => {
       const json = await res.json();
       setPets(json.pets);
     }
-  }, [animal, breed, location]);
+  }, []); //eslint-disable-line react-hooks/exhaustive-deps
   // [] in above line=> dependencies for useEffect for when to run, empty [] means run once at the beginning //if nothing is here, it will run after every render
 
   return (
