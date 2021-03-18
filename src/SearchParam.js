@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Pet from "./Pet";
+import useBreedList from "./useBreedList";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
@@ -12,9 +13,10 @@ const SearchParams = () => {
 
   //For breeds, we will use an external API, using fetch, which is a sideeffect, we use useEffect for sideeffects
   const [breed, setBreed] = useState("");
-  const breeds = [];
   //same as breeds, we will use fetch in useEffect
   const [pets, setPets] = useState([]);
+  // custom hook useBreedList dependent on animal: returns [breedlList,status],but not using status
+  const [breeds] = useBreedList(animal);
 
   //side effects
   useEffect(() => {

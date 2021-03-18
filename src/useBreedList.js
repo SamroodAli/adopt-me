@@ -28,4 +28,6 @@ export default function useBreedList(animal) {
       setStatus("loaded");
     }
   }, [animal]);
+
+  return [breedList, status];
 }
