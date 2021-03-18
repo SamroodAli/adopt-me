@@ -21,17 +21,16 @@ const SearchParams = () => {
   //side effects
   useEffect(() => {
     requestPets();
-
-    // async function to get pets from the api using fetch
-    async function requestPets() {
-      const res = await fetch(
-        `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
-      );
-      const json = await res.json();
-      setPets(json.pets);
-    }
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
-  // [] in above line=> dependencies for useEffect for when to run, empty [] means run once at the beginning //if nothing is here, it will run after every render
+
+  // async function to get pets from the api using fetch
+  async function requestPets() {
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+    );
+    const json = await res.json();
+    setPets(json.pets);
+  }
 
   return (
     <div className="search-params">
