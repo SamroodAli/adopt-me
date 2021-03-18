@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Pet from "./Pet";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
@@ -19,7 +19,7 @@ const SearchParams = () => {
   //side effects
   useEffect(() => {
     requestPets();
-  }, []);
+  }, []); //eslint-disable-line react-hooks/exhaustive-deps
   // [] in above line=> dependencies for useEffect for when to run, empty [] means run once at the beginning //if nothing is here, it will run after every render
 
   // async function to get pets from the api using fetch
@@ -95,5 +95,4 @@ const SearchParams = () => {
     </div>
   );
 };
-
 export default SearchParams;
