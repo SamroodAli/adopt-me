@@ -19,17 +19,17 @@ const SearchParams = () => {
   //side effects
   useEffect(() => {
     requestPets();
-  }, []); //eslint-disable-line react-hooks/exhaustive-deps
-  // [] in above line=> dependencies for useEffect for when to run, empty [] means run once at the beginning //if nothing is here, it will run after every render
 
-  // async function to get pets from the api using fetch
-  async function requestPets() {
-    const res = await fetch(
-      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
-    );
-    const json = await res.json();
-    setPets(json.pets);
-  }
+    // async function to get pets from the api using fetch
+    async function requestPets() {
+      const res = await fetch(
+        `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+      );
+      const json = await res.json();
+      setPets(json.pets);
+    }
+  }, [animal, breed, location]);
+  // [] in above line=> dependencies for useEffect for when to run, empty [] means run once at the beginning //if nothing is here, it will run after every render
 
   return (
     <div className="search-params">
