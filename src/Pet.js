@@ -1,4 +1,4 @@
-const Pet = (props) => {
+const Pet = ({ name, animal, breed, images, location, id }) => {
   return (
     <div>
       <h2>{props.name}</h2>
