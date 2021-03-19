@@ -9,10 +9,10 @@ const App = () => {
     <div>
       <h1>Adopt Me!</h1>
       <Router>
-        <Route path="/">
+        <Route path="./">
           <SearchParams />
         </Route>
-        <Route path="/details/:id">
+        <Route path="./details/:id">
           <Details />
         </Route>
       </Router>
