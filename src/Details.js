@@ -5,7 +5,7 @@ class Details extends Component {
   constructor() {
     super();
 
-    this.state = { loading: true };
+    this.state = { loading: true, display: "none" };
   }
 
   async componentDidMount() {
@@ -17,6 +17,7 @@ class Details extends Component {
       Object.assign(
         {
           loading: false,
+          display: "block",
         },
         json.pets[0]
       )
@@ -24,15 +25,24 @@ class Details extends Component {
   }
 
   render() {
-    const { animal, breed, city, state, description, name } = this.state;
+    const {
+      animal,
+      breed,
+      city,
+      state,
+      description,
+      name,
+      display,
+    } = this.state;
     return (
-      <div className="details">
+      <div className="details" style={{ display: `${display}` }}>
         <div>
           <h1>{name}</h1>
           <h2>
             {animal} - {breed} - {city}, {state}
           </h2>
           <p>{description}</p>
+          <button>Adopt {name}</button>
         </div>
       </div>
     );
