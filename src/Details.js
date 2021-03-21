@@ -2,11 +2,11 @@ import { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 class Details extends Component {
-  constructor() {
-    super();
-
-    this.state = { loading: true, display: "none" };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = { loading: true, display: "none" };
+  // }
+  state = { loading: true };
 
   async componentDidMount() {
     const res = await fetch(
@@ -17,7 +17,6 @@ class Details extends Component {
       Object.assign(
         {
           loading: false,
-          display: "block",
         },
         json.pets[0]
       )
@@ -25,17 +24,19 @@ class Details extends Component {
   }
 
   render() {
-    const {
-      animal,
-      breed,
-      city,
-      state,
-      description,
-      name,
-      display,
-    } = this.state;
+    if (this.state.loading) {
+      return (
+        <div className="details">
+          <div>
+            <h2>Loading ...</h2>
+          </div>
+        </div>
+      );
+    }
+
+    const { animal, breed, city, state, description, name } = this.state;
     return (
-      <div className="details" style={{ display: `${display}` }}>
+      <div className="details">
         <div>
           <h1>{name}</h1>
           <h2>
