@@ -24,8 +24,9 @@ class Details extends Component {
   }
 
   render() {
+    console.log(this.state)
     return <h2>Hi</h2>;
   }
 }
 
-export default Details;
+export default withRouter(Details);
