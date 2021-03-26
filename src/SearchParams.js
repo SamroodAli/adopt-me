@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import useBreedList from "./useBreedList";
 import Results from "./Results";
+import ThemeContext from "./ThemeContext";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
@@ -17,6 +18,8 @@ const SearchParams = () => {
   const [pets, setPets] = useState([]);
   // custom hook useBreedList dependent on animal: returns [breedlList,status],but not using status
   const [breeds] = useBreedList(animal);
+  //using context passed in as prop(prop-drilling) from App.js
+  const [theme] = useContext(ThemeContext); // we can have theme and setTheme
 
   //side effects
   useEffect(() => {
@@ -88,7 +91,7 @@ const SearchParams = () => {
             ))}
           </select>
         </label>
-        <button>Submit</button>
+        <button style={{ backgroundColor: theme }}>Submit</button>
       </form>
       <Results pets={pets} />
     </div>

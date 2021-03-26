@@ -1,12 +1,10 @@
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Carousel from "./Carousel";
+import ErrorBoundary from "./ErrorBoudary";
+import ThemeContext from "./ThemeContext";
 
 class Details extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = { loading: true, display: "none" };
-  // }
   state = { loading: true };
 
   async componentDidMount() {
@@ -44,6 +42,7 @@ class Details extends Component {
       name,
       images,
     } = this.state;
+
     return (
       <div className="details">
         <Carousel images={images} />
@@ -60,4 +59,12 @@ class Details extends Component {
   }
 }
 
-export default withRouter(Details);
+const DetailsWithRouter = withRouter(Details);
+
+export default function DetailsWithErrorBoundary() {
+  return (
+    <ErrorBoundary>
+      <DetailsWithRouter />
+    </ErrorBoundary>
+  );
+}
