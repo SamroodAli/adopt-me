@@ -4,6 +4,13 @@ import Results from "./Results";
 import ThemeContext from "./ThemeContext";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
+const THEMECOLORS = [
+  "Dark blue",
+  "Rebecca purple",
+  "Peru",
+  "Chartreuse",
+  "Medium orchid",
+];
 
 const SearchParams = () => {
   // data binding with default as Seattle, WA, used in onChange in input react element
@@ -19,7 +26,7 @@ const SearchParams = () => {
   // custom hook useBreedList dependent on animal: returns [breedlList,status],but not using status
   const [breeds] = useBreedList(animal);
   //using context passed in as prop(prop-drilling) from App.js
-  const [theme] = useContext(ThemeContext); // we can have theme and setTheme
+  const [theme, setTheme] = useContext(ThemeContext); // we can have theme and setTheme
 
   //side effects
   useEffect(() => {
@@ -87,6 +94,23 @@ const SearchParams = () => {
             {breeds.map((breed) => (
               <option value={breed} key={breed}>
                 {breed}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label htmlFor="theme">
+          Theme
+          <select
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+            onBlur={(e) => setTheme(e.target.value)}
+          >
+            {THEMECOLORS.map((color) => (
+              <option
+                value={color.split(" ").join("").toLowerCase()}
+                key={color}
+              >
+                {color}
               </option>
             ))}
           </select>
