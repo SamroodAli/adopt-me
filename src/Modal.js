@@ -4,9 +4,9 @@ import { createPortal } from "react-dom";
 const modalRoot = document.getElementById("modal");
 
 const Modal = ({ children }) => {
-  const elRef = useRef(null); //elRef is a container for state that survives past render cycles
+  const elRef = useRef(null);
   if (!elRef.current) {
-    elRef.current = document.createElement("div"); //initialize if hasnt been //wont create new div every rerender
+    elRef.current = document.createElement("div");
   }
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Modal = ({ children }) => {
     };
   }, []);
 
-  return createPortal(<div>{children}</div>, elRef.current); //div as sometimes children can be a list of elements, it needs to be a single parent
+  return createPortal(<div>{children}</div>, elRef.current); 
 };
 
 export default Modal;
