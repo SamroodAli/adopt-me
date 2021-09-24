@@ -1,4 +1,3 @@
-Documenting what I did:
-npm init
-npm install -D prettier
-npm install -D eslint@7.18.0 eslint-config-prettier@8.1.0
+# Adopt me project
+A react code along project from frontendmasters
+Where I learned react and the surrounding ecosystem tools like eslint , babel etc.
