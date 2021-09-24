@@ -13,7 +13,7 @@ const THEMECOLORS = [
 ];
 
 const SearchParams = () => {
-  const [location, setLocation] = useState("Seattle, WA");
+  const [location, setLocation] = useState("");
 
   const [animal, setAnimal] = useState("");
 
@@ -35,7 +35,7 @@ const SearchParams = () => {
   }
 
   return (
-    <div className="search-params">
+    <div className="p-10 mb-10 rounded-lg bg-gray-200 shadow-lg flex flex-col justify-center items-center">
       <form
         onSubmit={(e) => {
           e.preventDefault();
